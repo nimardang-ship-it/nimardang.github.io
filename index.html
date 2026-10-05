@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nimar Dang | Performance Marketing</title>
+<meta name="description" content="Nimar Dang helps purpose-driven organisations get more people through the door with lean, well-built Meta Ads campaigns.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* =========================================================
+     EDIT YOUR DETAILS IN THE <script> AT THE BOTTOM OF THIS FILE
+     ========================================================= */
+
+  :root {
+    --ink: #14213D;        /* headings, primary text */
+    --slate: #56607A;      /* secondary text */
+    --paper: #F4F6F9;      /* page background */
+    --sheet: #FFFFFF;      /* raised surfaces */
+    --rule: #D9DEE6;       /* borders */
+    --marigold: #E39B2D;   /* single accent */
+    --marigold-ink: #8A5A10;
+    --ok: #1F7A4D;
+    --err: #B3261E;
+
+    --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --body: "Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *, *::before, *::after { box-sizing: inherit; }
+
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 400 1.0625rem/1.6 var(--body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--marigold); outline-offset: 3px; border-radius: 4px; }
+
+  .wrap { max-width: 46rem; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* ---------- Top bar ---------- */
+  .bar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.5rem 0;
+    font-size: .95rem;
+  }
+  .bar nav { display: flex; gap: 1.25rem; }
+  .bar a { text-decoration: none; color: var(--slate); }
+  .bar a:hover { color: var(--ink); }
+  .bar .mark { font-family: var(--display); font-weight: 700; color: var(--ink); }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 4.5rem 0 4rem; }
+  .hero h1 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(3rem, 11vw, 6.25rem);
+    line-height: .92;
+    letter-spacing: -.035em;
+    margin: 0;
+  }
+  .hero h1 span { display: block; }
+  .hero h1 span:last-child {
+    display: inline-block;
+    background: linear-gradient(transparent 68%, var(--marigold) 68%, var(--marigold) 88%, transparent 88%);
+    padding-right: .1em;
+  }
+  .hero .role {
+    margin: 1.75rem 0 0;
+    font-size: 1.25rem;
+    font-weight: 500;
+    max-width: 34rem;
+  }
+  .hero .intro { margin: .75rem 0 0; color: var(--slate); max-width: 34rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: .5rem;
+    font: 600 1rem var(--body);
+    padding: .8rem 1.25rem;
+    border-radius: 999px;
+    border: 2px solid var(--ink);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background .15s, color .15s;
+  }
+  .btn-solid { background: var(--ink); color: #fff; }
+  .btn-solid:hover { background: #22335c; border-color: #22335c; }
+  .btn-line { background: transparent; color: var(--ink); }
+  .btn-line:hover { background: var(--ink); color: #fff; }
+  .btn svg { width: 1.1em; height: 1.1em; }
+
+  /* ---------- Sections ---------- */
+  section { padding: 3.5rem 0; border-top: 1px solid var(--rule); }
+  h2 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(1.75rem, 4.5vw, 2.25rem);
+    letter-spacing: -.02em;
+    line-height: 1.1;
+    margin: 0 0 .5rem;
+  }
+  .lede { color: var(--slate); margin: 0 0 2rem; }
+
+  /* ---------- Projects (PDF list) ---------- */
+  .projects { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+  .project {
+    display: grid;
+    grid-template-columns: 3.25rem 1fr;
+    gap: 1.25rem;
+    background: var(--sheet);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 1.4rem;
+  }
+  /* small "PDF page" glyph with a folded corner */
+  .doc {
+    position: relative;
+    width: 3.25rem; height: 4.1rem;
+    background: var(--paper);
+    border: 1.5px solid var(--ink);
+    border-radius: 3px;
+    clip-path: polygon(0 0, 72% 0, 100% 20%, 100% 100%, 0 100%);
+    display: flex; align-items: flex-end; justify-content: center;
+    padding-bottom: .4rem;
+    font: 700 .7rem var(--body);
+    color: var(--marigold-ink);
+  }
+  .doc::after {
+    content: ""; position: absolute; top: -1px; right: -1px;
+    width: 28%; height: 20%;
+    background: var(--marigold);
+  }
+  .project h3 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.3rem;
+    line-height: 1.2;
+    margin: 0;
+  }
+  .project .client { color: var(--slate); font-size: .95rem; margin: .2rem 0 0; }
+  .project .result { margin: .75rem 0 0; }
+  .project .result strong { color: var(--ink); }
+  .project .links { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; margin-top: 1rem; }
+  .project .links a {
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--marigold);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+  .project .links a:hover { color: var(--marigold-ink); }
+
+
+  /* ---------- Volunteering / references ---------- */
+  .refs { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+  .ref {
+    background: var(--sheet);
+    border: 1px solid var(--rule);
+    border-left: 5px solid var(--marigold);
+    border-radius: 14px;
+    padding: 1.5rem;
+  }
+  .ref h3 { font-family: var(--display); font-weight: 700; font-size: 1.3rem; line-height: 1.2; margin: 0; }
+  .ref .meta { color: var(--slate); font-size: .95rem; margin: .2rem 0 0; }
+  .ref .did { margin: .9rem 0 0; }
+  .ref blockquote {
+    margin: 1rem 0 0; padding: 0 0 0 1rem;
+    border-left: 2px solid var(--rule);
+    color: var(--ink); font-style: italic;
+  }
+  .ref .by { margin: .6rem 0 0; font-size: .95rem; color: var(--slate); }
+  .ref .links { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; margin-top: 1rem; }
+  .ref .links a {
+    font-weight: 600; text-decoration: underline;
+    text-decoration-color: var(--marigold); text-decoration-thickness: 2px; text-underline-offset: 4px;
+  }
+  .ref .links a:hover { color: var(--marigold-ink); }
+
+  /* ---------- Contact ---------- */
+  form { display: grid; gap: 1.1rem; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+  label { display: grid; gap: .35rem; font-weight: 600; font-size: .95rem; }
+  label small { font-weight: 400; color: var(--slate); }
+  input, textarea {
+    font: 400 1rem var(--body);
+    color: var(--ink);
+    background: var(--sheet);
+    border: 1.5px solid var(--rule);
+    border-radius: 10px;
+    padding: .8rem .9rem;
+    width: 100%;
+  }
+  input:focus, textarea:focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 3px rgba(227,155,45,.35); }
+  textarea { min-height: 9rem; resize: vertical; }
+  .hp { position: absolute; left: -9999px; }   /* spam honeypot */
+  .status { margin: 0; font-weight: 500; min-height: 1.6em; }
+  .status.ok { color: var(--ok); }
+  .status.err { color: var(--err); }
+  .form-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+
+  /* ---------- Footer ---------- */
+  footer { border-top: 1px solid var(--rule); padding: 2rem 0 3rem; color: var(--slate); font-size: .95rem; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
+  footer a { text-underline-offset: 3px; }
+
+  @media (max-width: 560px) {
+    .bar nav a:not(.keep) { display: none; }
+    .row { grid-template-columns: 1fr; }
+    .project { grid-template-columns: 1fr; }
+    .doc { display: none; }
+    .hero { padding-top: 2.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="bar">
+    <a class="mark" href="#top" id="mark"></a>
+    <nav aria-label="Main">
+      <a href="#work">Work</a>
+      <a href="#volunteering">Volunteering</a>
+      <a href="#contact" class="keep">Contact</a>
+      <a id="nav-linkedin" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <h1 id="name"></h1>
+      <p class="role" id="role"></p>
+      <p class="intro" id="intro"></p>
+      <div class="actions">
+        <a class="btn btn-solid" href="#work">Read my case studies</a>
+        <a class="btn btn-line" id="hero-linkedin" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          Connect on LinkedIn
+        </a>
+      </div>
+    </div>
+
+    <section id="work" aria-labelledby="work-h">
+      <h2 id="work-h">Case studies</h2>
+      <p class="lede">Each one is a PDF you can read in your browser or download.</p>
+      <ul class="projects" id="projects"></ul>
+    </section>
+
+    <section id="volunteering" aria-labelledby="vol-h">
+      <h2 id="vol-h">Volunteering in London 1.5 yrs</h2>
+      <p class="lede">I volunteered as Head of Marketing for two London-based organisations. Both founders have signed reference letters.</p>
+      <ul class="refs" id="refs"></ul>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-h">
+      <h2 id="contact-h">Work with me</h2>
+      <p class="lede">Tell me about your organisation and what you need. I usually reply within two working days.</p>
+
+      <form id="contact-form" novalidate>
+        <div class="row">
+          <label>Your name
+            <input name="name" type="text" autocomplete="name" required>
+          </label>
+          <label>Email
+            <input name="email" type="email" autocomplete="email" required>
+          </label>
+        </div>
+        <label><span>Organisation <small>(optional)</small></span>
+          <input name="organisation" type="text" autocomplete="organization">
+        </label>
+        <label>Message
+          <textarea name="message" required></textarea>
+        </label>
+        <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="form-foot">
+          <button class="btn btn-solid" type="submit" id="send-btn">Send message</button>
+          <p class="status" id="status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span id="copy"></span>
+    <span><a id="foot-email"></a> &nbsp;|&nbsp; <a id="foot-linkedin" target="_blank" rel="noopener">LinkedIn</a></span>
+  </div>
+</footer>
+
+<script>
+/* =========================================================
+   1. YOUR DETAILS — edit these
+   ========================================================= */
+const SITE = {
+  firstName: "Nimar",
+  lastName: "Dang",
+  role: "Performance marketer for purpose-driven organisations.",
+  intro: "I run lean Meta Ads campaigns that turn small budgets into real sign-ups, for communities, causes and events that need people to show up.",
+  email: "nimardang@gmail.com",                                 // ← your email
+  linkedin: "https://www.linkedin.com/in/nimardang/",       // ← your LinkedIn URL
+
+  // Contact form: create a free form at https://formspree.io,
+  // then paste its ID here (the part after /f/ in the endpoint URL).
+  // If left empty, the form opens the visitor's email app instead.
+  formspreeId: ""
+};
+
+/* =========================================================
+   2. YOUR PROJECTS — put each PDF in the /projects folder
+      and add an entry below. Newest first.
+   ========================================================= */
+const PROJECTS = [
+  {
+    title: "Growing PetSutra's Instagram from 20K to 71.6K and driving ₹5 lakh through SMS",
+    client: "PetSutra · Pet care brand",
+    result: "Took the following to <strong>71.6K</strong>, drove <strong>₹5 lakh in sales via SMS</strong>, and led 2 interns and a copywriter through the rebrand and product launches.",
+    pdf: "projects/PetSutra_Case_Study.pdf",
+    pages: 3
+  },
+  {
+    title: "18 events, 1,000+ attendees per concert, and a centenary concert for 1,750",
+    client: "Pandit ChaturLal Memorial Society · Udaipur, Mumbai, Delhi · 3.5 years",
+    result: "Filled <strong>18 classical music events</strong> on ₹5 lakh+ of ads, including <strong>1,750 attendees on ₹50,000</strong> for the centenary concert at Safdarjung Tomb.",
+    pdf: "projects/Pandit_ChaturLal_Case_Study.pdf",
+    pages: 3
+  },
+  {
+    title: "101 film scripts in 25 days on a ₹10,000 budget",
+    client: "Rainbow Lens · Pride Circle · 2026",
+    result: "Brought in <strong>101 scripts for a ₹4 lakh film grant</strong> by answering every DM by hand, which also built trust for a brand-new page.",
+    pdf: "projects/Rainbow_Lens_Case_Study.pdf",
+    pages: 3
+  },
+  {
+    title: "Bringing 8,600+ LGBT+ job seekers to RISE through niche Meta Ads targeting",
+    client: "Pride Circle · RISE Job Fair 2024 and 2025",
+    result: "Grew registrations from 37 to <strong>5,713 across five campaigns</strong> in 2024 and cut cost per lead by <strong>92%</strong>. Returned as a freelancer in 2025 for <strong>2,902 more leads on ₹1.5 lakh</strong>.",
+    pdf: "projects/Pride_Circle_Case_Study.pdf",
+    pages: 4
+  },
+  {
+    title: "Building paid demand for a poolside Sufi evening from a 19-follower account",
+    client: "SAAJ, a Mehfil by the Water · Niazi Nizami Brothers · 2026",
+    result: "Sold <strong>27 paid tickets, all from ads</strong>, for ₹47,720 in sales at 2.59× gross ROAS, in 15 days from a brand-new account.",
+    pdf: "projects/SAAJ_Meta_Campaign_Case_Study.pdf",
+    pages: 2
+  },
+  {
+    title: "Filling free Listening Circles on a shoestring Meta Ads budget",
+    client: "Men's Circle India · 2026",
+    result: "Cut cost per sign-up from <strong>₹184 to ₹34</strong> and grew the sign-up list from 215 to 909 men on ₹38,514 total spend.",
+    pdf: "projects/Mens_Circle_India_Case_Study.pdf",
+    pages: 4
+  }
+  // ,{
+  //   title: "Your next case study",
+  //   client: "Client name · Year",
+  //   result: "One sentence on the result, with the key number in <strong>bold</strong>.",
+  //   pdf: "projects/Your_File.pdf",
+  //   pages: 3
+  // }
+];
+
+/* =========================================================
+   3. VOLUNTEERING REFERENCES — add more the same way
+   ========================================================= */
+const REFERENCES = [
+  {
+    org: "NuraKit (formerly NuraXR)",
+    role: "Head of Marketing, volunteer · 10 Mar 2025 to 10 Jul 2026 · London",
+    did: "Managed the LinkedIn presence and lifted the engagement rate from <strong>6.8% to 17.9%</strong> (April 2026). Contributed competitor research, tone-of-voice analysis, content strategy, website content and explainer videos to the rebrand from NuraXR to NuraKit.",
+    quote: "A significant contribution to our marketing, brand development, digital engagement, and strategic growth.",
+    by: "Ammar Boukhemkhem, Founder & CEO",
+    pdf: "references/NuraKit_Reference_Letter.pdf"
+  },
+  {
+    org: "Neuro Voices",
+    role: "Head of Marketing, volunteer · 10 Mar 2026 to 10 Jul 2026 · London",
+    did: "Created social creatives, wrote captions, scheduled content and managed online reputation on LinkedIn. Led the <strong>Neurodiversity Pride Day 2026 campaign</strong>, which earned the highest engagement on the LinkedIn page in the previous six months.",
+    quote: "Humble, dependable, hardworking and an excellent team player.",
+    by: "Ammar Boukhemkhem, Founder & CEO",
+    pdf: "references/Neuro_Voices_Reference_Letter.pdf"
+  }
+];
+
+/* =========================================================
+   Nothing below needs editing
+   ========================================================= */
+const $ = id => document.getElementById(id);
+const fullName = `${SITE.firstName} ${SITE.lastName}`;
+
+$("name").innerHTML = `<span>${SITE.firstName}</span><span>${SITE.lastName}</span>`;
+$("mark").textContent = fullName;
+$("role").textContent = SITE.role;
+$("intro").textContent = SITE.intro;
+["nav-linkedin", "hero-linkedin", "foot-linkedin"].forEach(id => $(id).href = SITE.linkedin);
+$("foot-email").href = `mailto:${SITE.email}`;
+$("foot-email").textContent = SITE.email;
+$("copy").textContent = `© ${new Date().getFullYear()} ${fullName}`;
+
+$("projects").innerHTML = PROJECTS.map(p => `
+  <li class="project">
+    <div class="doc" aria-hidden="true">PDF</div>
+    <div>
+      <h3>${p.title}</h3>
+      <p class="client">${p.client}${p.pages ? ` · ${p.pages} pages` : ""}</p>
+      <p class="result">${p.result}</p>
+      <div class="links">
+        <a href="${p.pdf}" target="_blank" rel="noopener">Read the case study</a>
+        <a href="${p.pdf}" download>Download PDF</a>
+      </div>
+    </div>
+  </li>`).join("");
+
+$("refs").innerHTML = REFERENCES.map(r => `
+  <li class="ref">
+    <h3>${r.org}</h3>
+    <p class="meta">${r.role}</p>
+    <p class="did">${r.did}</p>
+    <blockquote>"${r.quote}"</blockquote>
+    <p class="by">${r.by}</p>
+    <div class="links">
+      <a href="${r.pdf}" target="_blank" rel="noopener">Read the reference letter</a>
+      <a href="${r.pdf}" download>Download PDF</a>
+    </div>
+  </li>`).join("");
+
+/* ---------- Contact form ---------- */
+const form = $("contact-form");
+const status = $("status");
+const btn = $("send-btn");
+
+function say(msg, kind) {
+  status.textContent = msg;
+  status.className = "status" + (kind ? " " + kind : "");
+}
+
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+  const data = new FormData(form);
+  const name = data.get("name").trim();
+  const email = data.get("email").trim();
+  const message = data.get("message").trim();
+
+  if (!name || !email || !message) return say("Add your name, email and a message to send.", "err");
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return say("That email address looks incomplete. Check it and try again.", "err");
+  if (data.get("_gotcha")) return; // bot
+
+  // No form service set up yet: fall back to the visitor's email app
+  if (!SITE.formspreeId) {
+    const org = data.get("organisation").trim();
+    const body = `${message}\n\n${name}${org ? ", " + org : ""}\n${email}`;
+    window.location.href = `mailto:${SITE.email}?subject=${encodeURIComponent("Enquiry from " + name)}&body=${encodeURIComponent(body)}`;
+    return say("Your email app should open with the message ready to send.", "ok");
+  }
+
+  btn.disabled = true;
+  btn.textContent = "Sending…";
+  say("");
+  try {
+    const res = await fetch(`https://formspree.io/f/${SITE.formspreeId}`, {
+      method: "POST",
+      body: data,
+      headers: { Accept: "application/json" }
+    });
+    if (!res.ok) throw new Error();
+    form.reset();
+    say("Message sent. I'll reply to your email soon.", "ok");
+  } catch {
+    say(`Message not sent. Check your connection and try again, or email ${SITE.email}.`, "err");
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Send message";
+  }
+});
+</script>
+</body>
+</html>
